@@ -444,6 +444,11 @@ html.vv-on, html.vv-on * { cursor: none !important; }
           <span class="label">ATO VI</span>
           <h3>Desert Talon</h3>
         </div></article>
+        <article class="card mission lockable" data-mission="midnight" data-after-mission hidden><div class="in">
+          <img class="patch" src="img/patch-midnight-cell.webp" alt="Patch da Operação Midnight Cell, Ato VII: soldados avançando no deserto à noite sob um helicóptero e o V do Valen">
+          <span class="label">ATO VII</span>
+          <h3>Midnight Cell</h3>
+        </div></article>
       </div>
 
       <div class="card feature campaign avulsa"><div class="in">
@@ -544,12 +549,14 @@ html.vv-on, html.vv-on * { cursor: none !important; }
 </div>
 
 <script>
-// Missão ativa: some sozinha 4 h depois da decolagem (ou se não houver data marcada)
+// Missão ativa: some sozinha 4 h depois da decolagem (ou se não houver data marcada),
+// e o cartão da missão passa a aparecer em "O que já voamos juntos"
 (function () {
   var box = document.getElementById('count');
   var t = box ? new Date(box.getAttribute('data-target')).getTime() : NaN;
   if (!isNaN(t) && Date.now() < t + 4 * 3600 * 1000) return;
   var sec = document.getElementById('ativa'); if (sec) sec.remove();
+  document.querySelectorAll('[data-after-mission]').forEach(function (el) { el.hidden = false; });
   document.querySelectorAll('[data-go="ativa"]').forEach(function (a) { var li = a.closest('li'); (li || a).remove(); });
 })();
 </script>

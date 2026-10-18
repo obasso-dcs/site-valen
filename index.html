@@ -544,8 +544,19 @@ html.vv-on, html.vv-on * { cursor: none !important; }
 </div>
 
 <script>
+// Missão ativa: some sozinha 4 h depois da decolagem (ou se não houver data marcada)
 (function () {
-  var SECTIONS = [['topo','Topo'],['ativa','Missão ativa'],['missoes','Missões'],['sobre','Sobre'],['esquadrao','Esquadrão'],['entrar','Entrar']];
+  var box = document.getElementById('count');
+  var t = box ? new Date(box.getAttribute('data-target')).getTime() : NaN;
+  if (!isNaN(t) && Date.now() < t + 4 * 3600 * 1000) return;
+  var sec = document.getElementById('ativa'); if (sec) sec.remove();
+  document.querySelectorAll('[data-go="ativa"]').forEach(function (a) { var li = a.closest('li'); (li || a).remove(); });
+})();
+</script>
+
+<script>
+(function () {
+  var SECTIONS = [['topo','Topo'],['ativa','Missão ativa'],['missoes','Missões'],['sobre','Sobre'],['esquadrao','Esquadrão'],['entrar','Entrar']].filter(function (s) { return document.getElementById(s[0]); });
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 

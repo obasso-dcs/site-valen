@@ -149,7 +149,7 @@ section + section { border-top: 1px solid var(--line); }
 .card.feature .in { background: linear-gradient(135deg, #12274a 0%, var(--panel) 60%); padding: 28px; }
 
 /* Missões */
-.active { margin-bottom: 72px; }
+.active { margin-bottom: 0; }
 .card.feature.active .in { display: flex; align-items: center; gap: 28px; padding: 22px 28px; }
 .active .patch { width: 120px; margin: 0; flex: none; }
 .active .txt { display: grid; gap: 8px; flex: 1; min-width: 0; }
@@ -340,6 +340,7 @@ html.vv-on, html.vv-on * { cursor: none !important; }
   <div class="wrap">
     <a href="#topo" data-go="topo" aria-label="State of Valen, voltar ao topo"><img src="img/logo-valen-nav.png" alt="State of Valen"></a>
     <ul>
+      <li><a href="#ativa" data-go="ativa">Missão ativa</a></li>
       <li><a href="#missoes" data-go="missoes">Missões</a></li>
       <li><a href="#sobre" data-go="sobre">Sobre</a></li>
       <li><a href="#esquadrao" data-go="esquadrao">Esquadrão</a></li>
@@ -370,12 +371,11 @@ html.vv-on, html.vv-on * { cursor: none !important; }
     </div>
   </div>
 
-  <section id="missoes">
+  <section id="ativa">
     <div class="wrap">
       <div class="sec-head">
-        <span class="label">Missões e campanhas</span>
-        <h2>O que já voamos juntos</h2>
-        <p>As missões que o grupo cumpriu e quem participou de cada uma.</p>
+        <span class="label">Próxima decolagem</span>
+        <h2>Missão ativa</h2>
       </div>
 
       <div class="card feature active lockable"><div class="in">
@@ -397,6 +397,16 @@ html.vv-on, html.vv-on * { cursor: none !important; }
         </div>
         <a class="btn btn-solid" href="https://chimeradcs.com/missoes/" target="_blank" rel="noopener">Inscreva-se</a>
       </div></div>
+    </div>
+  </section>
+
+  <section id="missoes">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">Missões e campanhas</span>
+        <h2>O que já voamos juntos</h2>
+        <p>As missões que o grupo cumpriu e quem participou de cada uma.</p>
+      </div>
 
       <div class="card feature campaign"><div class="in">
         <span class="label">Campanha em destaque</span>
@@ -535,7 +545,7 @@ html.vv-on, html.vv-on * { cursor: none !important; }
 
 <script>
 (function () {
-  var SECTIONS = [['topo','Topo'],['missoes','Missões'],['sobre','Sobre'],['esquadrao','Esquadrão'],['entrar','Entrar']];
+  var SECTIONS = [['topo','Topo'],['ativa','Missão ativa'],['missoes','Missões'],['sobre','Sobre'],['esquadrao','Esquadrão'],['entrar','Entrar']];
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 

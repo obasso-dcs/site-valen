@@ -23,13 +23,18 @@
     h1,h2 { font-weight:400; }
     h1 { margin:10px 0 12px; font:clamp(32px,6vw,48px)/1.12 var(--display); }
     .lead { color:var(--muted); margin:0 0 40px; max-width:640px; }
-    .partners { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:20px; }
+    .partners { display:grid; gap:20px; }
     .card { --cut:16px; background:var(--sand); padding:1px; clip-path:polygon(0 0,calc(100% - var(--cut)) 0,100% var(--cut),100% 100%,var(--cut) 100%,0 calc(100% - var(--cut))); }
-    .card .in { background:linear-gradient(135deg,#12274a 0%,var(--panel) 60%); height:100%; padding:28px; display:grid; gap:12px; align-content:start; clip-path:inherit; }
-    .card .logo { width:180px; height:auto; display:block; margin-bottom:6px; filter:drop-shadow(0 8px 16px rgba(0,0,0,.5)); }
-    .card h2 { color:var(--paper); font-size:30px; line-height:1.1; margin:0; }
-    .card p { color:var(--muted); margin:0; }
-    .btn { justify-self:start; margin-top:8px; display:inline-flex; font:500 13px var(--mono); letter-spacing:.12em; text-transform:uppercase; text-decoration:none; padding:14px 22px; background:var(--sand); color:var(--bg); clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%); transition:background .2s; }
+    .card .in { display:grid; grid-template-columns:minmax(220px,1fr) 1.7fr; height:100%; background:var(--panel); clip-path:inherit; }
+    .card .art { display:grid; place-items:center; padding:32px; background:radial-gradient(ellipse 70% 70% at 50% 50%,#12274a 0%,#08111e 80%); border-right:1px solid var(--line); }
+    .card .logo { width:min(220px,100%); height:auto; display:block; filter:drop-shadow(0 8px 16px rgba(0,0,0,.5)); }
+    .card .txt { display:grid; gap:14px; align-content:center; justify-items:start; padding:32px 36px; }
+    .card h2 { color:var(--paper); font-size:clamp(28px,4vw,38px); line-height:1.1; margin:0; }
+    .card p { color:var(--muted); margin:0; max-width:560px; }
+    .tags { display:flex; flex-wrap:wrap; gap:8px; }
+    .tag { font:11px var(--mono); letter-spacing:.14em; text-transform:uppercase; padding:5px 10px; border:1px solid var(--line); color:var(--muted); }
+    .btn { margin-top:6px; display:inline-flex; align-items:center; gap:10px; font:500 13px var(--mono); letter-spacing:.12em; text-transform:uppercase; text-decoration:none; padding:14px 22px; background:var(--sand); color:var(--bg); clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%); transition:background .2s; }
+    @media(max-width:700px) { .card .in { grid-template-columns:1fr; } .card .art { border-right:0; border-bottom:1px solid var(--line); padding:28px; } .card .txt { padding:26px 22px 30px; } }
     .btn:hover { background:var(--paper); }
     .btn:focus-visible, a:focus-visible { outline:2px solid var(--sand); outline-offset:3px; }
     section { border-top:1px solid var(--line); padding:26px 0; }
@@ -56,11 +61,14 @@
 
     <div class="partners">
       <article class="card"><div class="in">
-        <img class="logo" src="/img/logo-chimera-operation.webp" alt="Logo da Chimera Operation: um grifo de asas abertas dentro de um selo circular">
-        <span class="eyebrow">Parceiro</span>
-        <h2>Chimera Operation</h2>
-        <p>Onde abrimos as inscrições das nossas missões.</p>
-        <a class="btn" href="https://chimeradcs.com/" target="_blank" rel="noopener">Visitar site</a>
+        <div class="art"><img class="logo" src="/img/logo-chimera-operation.webp" alt="Logo da Chimera Operation: um grifo de asas abertas dentro de um selo circular"></div>
+        <div class="txt">
+          <span class="eyebrow">Parceiro</span>
+          <h2>Chimera Operation</h2>
+          <div class="tags"><span class="tag">DCS World</span><span class="tag">Missões</span></div>
+          <p>Onde abrimos as inscrições das nossas missões.</p>
+          <a class="btn" href="https://chimeradcs.com/" target="_blank" rel="noopener">Visitar o site <span aria-hidden="true">↗</span></a>
+        </div>
       </div></article>
     </div>
   </main>

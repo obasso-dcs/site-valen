@@ -379,12 +379,12 @@ html.vv-on, html.vv-on * { cursor: none !important; }
       </div>
 
       <div class="card feature active lockable"><div class="in">
-        <img class="patch" src="img/patch-midnight-cell.webp" alt="Patch da Operação Midnight Cell, The Legacy of Valen: soldados avançando no deserto à noite sob um helicóptero e o V do Valen">
+        <img class="patch" src="img/patch-broken-cedar.webp" alt="Patch da Operação Broken Cedar: um cedro em chamas na encosta, com caças, helicópteros e fumaça azul de marcação no vale">
         <div class="txt">
-          <span class="label live"><span class="dot"></span>Próxima missão · The Legacy of Valen</span>
-          <h3>Midnight Cell</h3>
-          <div class="count" id="count" data-target="2026-10-23T21:00:00-03:00">
-            <span class="cwhen">Sex, 23 out · 21:00 BRT</span>
+          <span class="label live"><span class="dot"></span>Próxima missão · Fora da campanha</span>
+          <h3>Broken Cedar</h3>
+          <div class="count" id="count" data-target="2026-11-04T21:00:00-03:00">
+            <span class="cwhen">Qua, 4 nov · 21:00 BRT</span>
             <div class="cbox" hidden>
               <span class="clabel">Decolagem em</span>
               <span class="cnum"><b data-u="d">0</b><i>d</i></span>
@@ -395,7 +395,7 @@ html.vv-on, html.vv-on * { cursor: none !important; }
             <span class="clive" hidden>Em andamento agora</span>
           </div>
         </div>
-        <a class="btn btn-solid" href="https://chimeradcs.com/missoes/" target="_blank" rel="noopener">Inscreva-se</a>
+        <a class="btn btn-solid" href="https://chimeradcs.com/missoes/cmvv9awdj6wqe01mh0qwjy9dm" target="_blank" rel="noopener">Inscreva-se</a>
       </div></div>
     </div>
   </section>
@@ -444,7 +444,7 @@ html.vv-on, html.vv-on * { cursor: none !important; }
           <span class="label">ATO VI</span>
           <h3>Desert Talon</h3>
         </div></article>
-        <article class="card mission lockable" data-mission="midnight" data-after-mission hidden><div class="in">
+        <article class="card mission lockable" data-mission="midnight"><div class="in">
           <img class="patch" src="img/patch-midnight-cell.webp" alt="Patch da Operação Midnight Cell, Ato VII: soldados avançando no deserto à noite sob um helicóptero e o V do Valen">
           <span class="label">ATO VII</span>
           <h3>Midnight Cell</h3>
@@ -466,6 +466,11 @@ html.vv-on, html.vv-on * { cursor: none !important; }
           <img class="patch" src="img/patch-rail-interdiction.webp" alt="Patch da Operação Rail Interdiction, HOG Flight: um A-10 e helicópteros atacando um trem no deserto">
           <span class="label">Operação</span>
           <h3>Rail Interdiction</h3>
+        </div></article>
+        <article class="card mission lockable" data-mission="cedar" data-after-mission hidden><div class="in">
+          <img class="patch" src="img/patch-broken-cedar.webp" alt="Patch da Operação Broken Cedar: um cedro em chamas na encosta, com caças, helicópteros e fumaça azul de marcação no vale">
+          <span class="label">Operação</span>
+          <h3>Broken Cedar</h3>
         </div></article>
       </div>
     </div>
@@ -549,12 +554,12 @@ html.vv-on, html.vv-on * { cursor: none !important; }
 </div>
 
 <script>
-// Missão ativa: some sozinha 4 h depois da decolagem (ou se não houver data marcada),
+// Missão ativa: some sozinha 2 h depois da decolagem (ou se não houver data marcada),
 // e o cartão da missão passa a aparecer em "O que já voamos juntos"
 (function () {
   var box = document.getElementById('count');
   var t = box ? new Date(box.getAttribute('data-target')).getTime() : NaN;
-  if (!isNaN(t) && Date.now() < t + 4 * 3600 * 1000) return;
+  if (!isNaN(t) && Date.now() < t + 2 * 3600 * 1000) return;
   var sec = document.getElementById('ativa'); if (sec) sec.remove();
   document.querySelectorAll('[data-after-mission]').forEach(function (el) { el.hidden = false; });
   document.querySelectorAll('[data-go="ativa"]').forEach(function (a) { var li = a.closest('li'); (li || a).remove(); });

@@ -150,6 +150,7 @@ section + section { border-top: 1px solid var(--line); }
 
 /* Missões */
 .active { margin-bottom: 0; }
+.active + .active { margin-top: 20px; }
 .card.feature.active .in { display: flex; align-items: center; gap: 28px; padding: 22px 28px; }
 .active .patch { width: 120px; margin: 0; flex: none; }
 .active .txt { display: grid; gap: 8px; flex: 1; min-width: 0; }
@@ -378,12 +379,51 @@ html.vv-on, html.vv-on * { cursor: none !important; }
         <h2>Missão ativa</h2>
       </div>
 
-      <div class="card feature active lockable"><div class="in">
+      <div class="card feature active lockable" data-mission="seco2"><div class="in">
+        <div class="txt">
+          <span class="label live"><span class="dot"></span>Próxima missão · Impacto Seco 2</span>
+          <h3>Missão 2</h3>
+          <div class="count" data-target="2026-10-30T21:00:00-03:00">
+            <span class="cwhen">Sex, 30 out · 21:00 BRT</span>
+            <div class="cbox" hidden>
+              <span class="clabel">Decolagem em</span>
+              <span class="cnum"><b data-u="d">0</b><i>d</i></span>
+              <span class="cnum"><b data-u="h">00</b><i>h</i></span>
+              <span class="cnum"><b data-u="m">00</b><i>min</i></span>
+              <span class="cnum"><b data-u="s">00</b><i>s</i></span>
+            </div>
+            <span class="clive" hidden>Em andamento agora</span>
+          </div>
+        </div>
+        <a class="btn btn-solid" href="https://chimeradcs.com/missoes/" target="_blank" rel="noopener">Inscreva-se</a>
+      </div></div>
+
+      <div class="card feature active lockable" data-mission="er4"><div class="in">
+        <img class="patch" src="img/patch-eastern-resolve.webp" alt="Patch da Operation Eastern Resolve: um caça sobre o mapa da Síria com uma mira vermelha, e um porta-aviões no mar">
+        <div class="txt">
+          <span class="label live"><span class="dot"></span>Próxima missão · Operation Eastern Resolve</span>
+          <h3>Dia 4</h3>
+          <div class="count" data-target="2026-10-31T21:00:00-03:00">
+            <span class="cwhen">Sáb, 31 out · 21:00 BRT</span>
+            <div class="cbox" hidden>
+              <span class="clabel">Decolagem em</span>
+              <span class="cnum"><b data-u="d">0</b><i>d</i></span>
+              <span class="cnum"><b data-u="h">00</b><i>h</i></span>
+              <span class="cnum"><b data-u="m">00</b><i>min</i></span>
+              <span class="cnum"><b data-u="s">00</b><i>s</i></span>
+            </div>
+            <span class="clive" hidden>Em andamento agora</span>
+          </div>
+        </div>
+        <a class="btn btn-solid" href="https://chimeradcs.com/missoes/" target="_blank" rel="noopener">Inscreva-se</a>
+      </div></div>
+
+      <div class="card feature active lockable" data-mission="cedar"><div class="in">
         <img class="patch" src="img/patch-broken-cedar.webp" alt="Patch da Operação Broken Cedar: um cedro em chamas na encosta, com caças, helicópteros e fumaça azul de marcação no vale">
         <div class="txt">
           <span class="label live"><span class="dot"></span>Próxima missão · Fora da campanha</span>
           <h3>Broken Cedar</h3>
-          <div class="count" id="count" data-target="2026-11-04T21:00:00-03:00">
+          <div class="count" data-target="2026-11-04T21:00:00-03:00">
             <span class="cwhen">Qua, 4 nov · 21:00 BRT</span>
             <div class="cbox" hidden>
               <span class="clabel">Decolagem em</span>
@@ -452,6 +492,50 @@ html.vv-on, html.vv-on * { cursor: none !important; }
       </div>
 
       <div class="card feature campaign avulsa"><div class="in">
+        <span class="label">Campanha</span>
+        <h3>Impacto Seco 2</h3>
+      </div></div>
+
+      <div class="missions">
+        <article class="card mission lockable" data-mission="seco1"><div class="in">
+          <span class="label">MISSÃO 1</span>
+          <h3>Impacto Seco 2</h3>
+        </div></article>
+        <article class="card mission lockable" data-mission="seco2" data-after-mission="2026-10-30T21:00:00-03:00" hidden><div class="in">
+          <span class="label">MISSÃO 2</span>
+          <h3>Impacto Seco 2</h3>
+        </div></article>
+      </div>
+
+      <div class="card feature campaign avulsa"><div class="in">
+        <span class="label">Campanha</span>
+        <h3>Operation Eastern Resolve</h3>
+      </div></div>
+
+      <div class="missions">
+        <article class="card mission lockable" data-mission="er1"><div class="in">
+          <img class="patch" src="img/patch-eastern-resolve.webp" alt="Patch da Operation Eastern Resolve: um caça sobre o mapa da Síria com uma mira vermelha, e um porta-aviões no mar">
+          <span class="label">DIA 1</span>
+          <h3>Dia 1</h3>
+        </div></article>
+        <article class="card mission lockable" data-mission="er2"><div class="in">
+          <img class="patch" src="img/patch-eastern-resolve.webp" alt="Patch da Operation Eastern Resolve: um caça sobre o mapa da Síria com uma mira vermelha, e um porta-aviões no mar">
+          <span class="label">DIA 2</span>
+          <h3>Dia 2</h3>
+        </div></article>
+        <article class="card mission lockable" data-mission="er3"><div class="in">
+          <img class="patch" src="img/patch-eastern-resolve.webp" alt="Patch da Operation Eastern Resolve: um caça sobre o mapa da Síria com uma mira vermelha, e um porta-aviões no mar">
+          <span class="label">DIA 3</span>
+          <h3>Dia 3</h3>
+        </div></article>
+        <article class="card mission lockable" data-mission="er4" data-after-mission="2026-10-31T21:00:00-03:00" hidden><div class="in">
+          <img class="patch" src="img/patch-eastern-resolve.webp" alt="Patch da Operation Eastern Resolve: um caça sobre o mapa da Síria com uma mira vermelha, e um porta-aviões no mar">
+          <span class="label">DIA 4</span>
+          <h3>Dia 4</h3>
+        </div></article>
+      </div>
+
+      <div class="card feature campaign avulsa"><div class="in">
         <span class="label">Fora da campanha</span>
         <h3>Operações</h3>
       </div></div>
@@ -467,7 +551,7 @@ html.vv-on, html.vv-on * { cursor: none !important; }
           <span class="label">Operação</span>
           <h3>Rail Interdiction</h3>
         </div></article>
-        <article class="card mission lockable" data-mission="cedar" data-after-mission hidden><div class="in">
+        <article class="card mission lockable" data-mission="cedar" data-after-mission="2026-11-04T21:00:00-03:00" hidden><div class="in">
           <img class="patch" src="img/patch-broken-cedar.webp" alt="Patch da Operação Broken Cedar: um cedro em chamas na encosta, com caças, helicópteros e fumaça azul de marcação no vale">
           <span class="label">Operação</span>
           <h3>Broken Cedar</h3>
@@ -554,14 +638,17 @@ html.vv-on, html.vv-on * { cursor: none !important; }
 </div>
 
 <script>
-// Missão ativa: some sozinha 2 h depois da decolagem (ou se não houver data marcada),
-// e o cartão da missão passa a aparecer em "O que já voamos juntos"
+// Cada missão ativa some sozinha 2 h depois da decolagem e o cartão dela passa a
+// aparecer na sua campanha; sem nenhuma missão ativa, a seção some
 (function () {
-  var box = document.getElementById('count');
-  var t = box ? new Date(box.getAttribute('data-target')).getTime() : NaN;
-  if (!isNaN(t) && Date.now() < t + 2 * 3600 * 1000) return;
+  var GRACE = 2 * 3600 * 1000, now = Date.now();
+  function over(iso) { var t = new Date(iso).getTime(); return isNaN(t) || now >= t + GRACE; }
+  document.querySelectorAll('#ativa .active').forEach(function (c) {
+    var box = c.querySelector('.count'); if (!box || over(box.getAttribute('data-target'))) c.remove();
+  });
+  document.querySelectorAll('[data-after-mission]').forEach(function (el) { if (over(el.getAttribute('data-after-mission'))) el.hidden = false; });
+  if (document.querySelector('#ativa .active')) return;
   var sec = document.getElementById('ativa'); if (sec) sec.remove();
-  document.querySelectorAll('[data-after-mission]').forEach(function (el) { el.hidden = false; });
   document.querySelectorAll('[data-go="ativa"]').forEach(function (a) { var li = a.closest('li'); (li || a).remove(); });
 })();
 </script>
@@ -716,23 +803,26 @@ html.vv-on, html.vv-on * { cursor: none !important; }
 
 <script>
 (function () {
-  var box = document.getElementById('count'); if (!box) return;
-  var target = new Date(box.getAttribute('data-target')).getTime();
-  var when = box.querySelector('.cwhen'), cb = box.querySelector('.cbox'), live = box.querySelector('.clive');
-  var el = {}; ['d','h','m','s'].forEach(function (u) { el[u] = box.querySelector('[data-u="' + u + '"]'); });
   function pad(n) { return n < 10 ? '0' + n : '' + n; }
+  var boxes = [].map.call(document.querySelectorAll('#ativa .count'), function (box) {
+    var el = {}; ['d','h','m','s'].forEach(function (u) { el[u] = box.querySelector('[data-u="' + u + '"]'); });
+    return { target: new Date(box.getAttribute('data-target')).getTime(), cb: box.querySelector('.cbox'), live: box.querySelector('.clive'), el: el };
+  });
+  if (!boxes.length) return;
   function tick() {
-    var diff = target - Date.now();
-    if (diff > 0) {
-      cb.hidden = false; live.hidden = true;
-      var t = Math.floor(diff / 1000);
-      el.d.textContent = Math.floor(t / 86400);
-      el.h.textContent = pad(Math.floor(t % 86400 / 3600));
-      el.m.textContent = pad(Math.floor(t % 3600 / 60));
-      el.s.textContent = pad(t % 60);
-    } else if (diff > -4 * 3600 * 1000) {
-      cb.hidden = true; live.hidden = false;
-    } else { cb.hidden = true; live.hidden = true; }
+    boxes.forEach(function (x) {
+      var diff = x.target - Date.now();
+      if (diff > 0) {
+        x.cb.hidden = false; x.live.hidden = true;
+        var t = Math.floor(diff / 1000);
+        x.el.d.textContent = Math.floor(t / 86400);
+        x.el.h.textContent = pad(Math.floor(t % 86400 / 3600));
+        x.el.m.textContent = pad(Math.floor(t % 3600 / 60));
+        x.el.s.textContent = pad(t % 60);
+      } else if (diff > -2 * 3600 * 1000) {
+        x.cb.hidden = true; x.live.hidden = false;
+      } else { x.cb.hidden = true; x.live.hidden = true; }
+    });
   }
   tick(); setInterval(tick, 1000);
 })();

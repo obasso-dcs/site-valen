@@ -232,20 +232,10 @@ footer p { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; colo
 .rung:focus-visible { outline: 2px solid var(--sand); outline-offset: 2px; }
 .pip { position: absolute; right: -8px; width: 0; height: 0; margin-top: -5px; border: 5px solid transparent; border-right: 8px solid var(--sand); border-left: 0; }
 
-/* Cursor velocity vector */
-.vv { position: fixed; left: 0; top: 0; width: 0; height: 0; z-index: 1000; pointer-events: none; opacity: 0; transition: opacity .2s; }
-.vv.on { opacity: 1; }
-.vv .ring { position: absolute; left: -24px; top: -24px; width: 48px; height: 48px; transition: transform .18s ease-out; }
-.vv .bank { position: absolute; inset: 0; transition: transform .12s linear; }
-.vv svg { position: absolute; inset: 0; width: 48px; height: 48px; overflow: visible; }
-.vv .fly * { stroke: var(--sand); stroke-width: 2; fill: none; }
-.vv .fly .vp { fill: var(--paper); stroke: #0c1a33; stroke-width: 11; stroke-linejoin: round; paint-order: stroke; }
-.vv .fly .dot { fill: #ff2a2a; stroke: rgba(10,20,40,.55); stroke-width: 1; }
-.vv .fly polygon { fill: var(--paper); stroke: none; }
-.vv .brk { opacity: 0; transition: opacity .15s, transform .18s; transform-origin: 24px 24px; transform: scale(.7); }
-.vv .brk path { stroke: var(--paper); stroke-width: 2; fill: none; }
-.vv.down .ring { transform: scale(.85); }
-html.vv-on, html.vv-on * { cursor: none !important; }
+/* Cursor: seta do velocity vector como cursor nativo (sem atraso) */
+@media (hover: hover) and (pointer: fine) {
+  html, html * { cursor: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="20 22 28 28"%3E%3Cg transform="translate(24 24) rotate(155) scale(.133) translate(-90 -166)" fill="%23f0efea" stroke="%230c1a33" stroke-width="11" stroke-linejoin="round" paint-order="stroke"%3E%3Cpolygon points="8,8 51,8 110,125 90,166"/%3E%3Cpolygon points="129,7 171,8 117,113 97,73"/%3E%3C/g%3E%3C/svg%3E') 4 2, auto !important; }
+}
 
 /* Mira de travamento nos cartões */
 .lockable .in::after {
@@ -633,12 +623,6 @@ html.vv-on, html.vv-on * { cursor: none !important; }
 </footer>
 
 <nav class="ladder" id="ladder" aria-label="Seções da página"><span class="rail"></span><span class="pip" id="pip"></span></nav>
-<div class="vv" id="vv" aria-hidden="true">
-  <div class="ring">
-    <svg viewBox="0 0 48 48" class="brkwrap"><g class="brk"><path d="M6 14V6H14"/><path d="M34 6H42V14"/><path d="M6 34V42H14"/><path d="M34 42H42V34"/></g></svg>
-    <div class="bank" id="vvBank"><svg viewBox="0 0 48 48"><g class="fly"><g class="vmark" transform="translate(24 24) rotate(155) scale(.133) translate(-90 -166)"><polygon class="vp" points="8,8 51,8 110,125 90,166"/><polygon class="vp" points="129,7 171,8 117,113 97,73"/></g></g></svg></div>
-  </div>
-</div>
 
 <script>
 // Cada missão ativa some sozinha 2 h depois da decolagem e o cartão dela passa a
@@ -660,7 +644,6 @@ html.vv-on, html.vv-on * { cursor: none !important; }
 (function () {
   var SECTIONS = [['topo','Topo'],['ativa','Missão ativa'],['missoes','Missões'],['sobre','Sobre'],['esquadrao','Esquadrão'],['entrar','Entrar']].filter(function (s) { return document.getElementById(s[0]); });
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
   // Navegação suave
   function go(id) { var el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' }); }
@@ -725,29 +708,6 @@ html.vv-on, html.vv-on * { cursor: none !important; }
     document.addEventListener(ev, function (e) { var m = e.target.closest && e.target.closest('[data-mission]'); if (m) setHot(m.getAttribute('data-mission'), false); });
   });
 
-  // Cursor velocity vector (apenas com mouse)
-  if (fine) {
-    var vv = document.getElementById('vv'), bank = document.getElementById('vvBank');
-    var tx = -100, ty = -100, x = -100, y = -100, started = false;
-    document.addEventListener('mousemove', function (e) {
-      tx = e.clientX; ty = e.clientY;
-      if (!started) { started = true; x = tx; y = ty; document.documentElement.classList.add('vv-on'); vv.classList.add('on'); frame(); }
-      var hit = e.target.closest && e.target.closest('a, button, .lockable, .mk, .rung');
-      vv.classList.toggle('lock', !!hit);
-    });
-    document.addEventListener('mouseleave', function () { vv.classList.remove('on'); });
-    document.addEventListener('mouseenter', function () { if (started) vv.classList.add('on'); });
-    document.addEventListener('mousedown', function () { vv.classList.add('down'); });
-    document.addEventListener('mouseup', function () { vv.classList.remove('down'); });
-    function frame() {
-      var k = 1, dx = tx - x;
-      x += dx * k; y += (ty - y) * k;
-      var tilt = 0;
-      vv.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
-      bank.style.transform = 'rotate(' + tilt.toFixed(1) + 'deg)';
-      requestAnimationFrame(frame);
-    }
-  }
 })();
 </script>
 
